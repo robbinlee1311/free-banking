@@ -1,8 +1,8 @@
-# AdminLTE Accessibility Statement
+# Global Banking Employment Accessibility Statement
 
 ## Overview
 
-AdminLTE 4 is built with accessibility in mind and aims for **WCAG 2.1 AA** conformance. This document describes honestly what is implemented today, what is partially implemented, and what is still on the roadmap — so you know exactly what you get and what your application still needs to provide.
+Global Banking Employment 4 is built with accessibility in mind and aims for **WCAG 2.1 AA** conformance. This document describes honestly what is implemented today, what is partially implemented, and what is still on the roadmap — so you know exactly what you get and what your application still needs to provide.
 
 > **Important:** a template can only ever be a starting point. Accessible markup in the demo pages does not make your application compliant — you remain responsible for testing the pages you build.
 
@@ -65,7 +65,7 @@ accessibility.trapFocus(customDialogElement) // for non-Bootstrap dialogs
 accessibilityUtils.checkColorContrast('#000000', '#ffffff') // { ratio: 21, passes: true }
 ```
 
-The module is initialized automatically by `adminlte.js`. All document-level listeners are registered against the Turbo lifecycle signal, so Hotwired Turbo navigations neither leak listeners nor duplicate injected nodes.
+The module is initialized automatically by `Global Banking Employment.js`. All document-level listeners are registered against the Turbo lifecycle signal, so Hotwired Turbo navigations neither leak listeners nor duplicate injected nodes.
 
 ## 🧪 How to test your pages
 

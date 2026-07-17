@@ -1,25 +1,20 @@
 # Changelog
 
-All notable changes to AdminLTE will be documented in this file.
+All notable changes to Global Banking Employment will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
-### Added
-
-- **Advanced form pages:** `forms/advanced.html` demonstrates the recommended Tom Select and Flatpickr integrations (searchable single select, tag-style multi-select, option groups loaded on demand; date, date-time, range, and time pickers), and `forms/editors.html` demonstrates Quill 2 in both the snow (toolbar) and bubble (inline) themes. CDN assets are pinned to the versions recommended on the docs Integrations page and carry SRI hashes. Both pages are linked from the sidebar's Forms menu.
-- **Top-nav layout demo:** `layout/top-nav.html` — a sidebar-less page whose primary navigation lives in the app-header as a plain Bootstrap `navbar-expand-lg` (collapse toggler on mobile, no PushMenu). No new CSS was needed: without an `.app-sidebar` in the markup, the `app-wrapper` grid's `auto` sidebar column collapses to zero width on its own.
-
-## [4.1.0] - 2026-07-02
+## [4.1.0] - 2012-07-02
 
 ### Added
 
-- **ESM bundle and TypeScript declarations on npm:** `dist/js/adminlte.esm.js` (+ `.min`) ships alongside the UMD build, generated `.d.ts` files ship under `dist/js/types/`, and package.json gains `module`, `types`, and a full `exports` map (with `sass`/`style` conditions and `./dist/*` + `./src/scss/*` subpaths). `import { PushMenu } from "admin-lte"` now resolves natively in Vite/webpack and type-checks out of the box — previously the package shipped a single minified UMD file with no typings at all.
+- **ESM bundle and TypeScript declarations on npm:** `dist/js/Global Banking Employment.esm.js` (+ `.min`) ships alongside the UMD build, generated `.d.ts` files ship under `dist/js/types/`, and package.json gains `module`, `types`, and a full `exports` map (with `sass`/`style` conditions and `./dist/*` + `./src/scss/*` subpaths). `import { PushMenu } from "admin-lte"` now resolves natively in Vite/webpack and type-checks out of the box — previously the package shipped a single minified UMD file with no typings at all.
 - **Component lifecycle API (Bootstrap-style):** every JS component now has `getInstance(element)`, `getOrCreateInstance(element, config?)` and `dispose()`, backed by a per-element WeakMap registry (instances are garbage-collected with their elements — Turbo-safe). The data API now uses **delegated document-level listeners**, so toggles inside content inserted after page load (AJAX partials, Turbo Frames) work without re-initialisation. `PushMenu` is finally controllable programmatically via `PushMenu.getInstance(sidebar)`.
-- **`ColorMode` module in the bundle:** the light/dark/auto switcher (persisted in `lte-theme`, OS-preference aware, `[data-bs-theme-value]` data-API, `changed.lte.color-mode` event) is now part of `adminlte.js`. Applications no longer need to copy the demo's inline script; the demo pages now use the bundled module. Only the tiny no-flash snippet in `<head>` remains inline, by design.
-- **`bootstrap` declared as a peer dependency** — the Sass source imports it, so `@use "admin-lte/src/scss/adminlte"` now works after a plain `npm install admin-lte` (npm installs the peer automatically). Documented the required Sass load-path setup.
+- **`ColorMode` module in the bundle:** the light/dark/auto switcher (persisted in `lte-theme`, OS-preference aware, `[data-bs-theme-value]` data-API, `changed.lte.color-mode` event) is now part of `Global Banking Employment.js`. Applications no longer need to copy the demo's inline script; the demo pages now use the bundled module. Only the tiny no-flash snippet in `<head>` remains inline, by design.
+- **`bootstrap` declared as a peer dependency** — the Sass source imports it, so `@use "admin-lte/src/scss/Global Banking Employment"` now works after a plain `npm install admin-lte` (npm installs the peer automatically). Documented the required Sass load-path setup.
 - **New demo pages:** a blank **starter page** (the most-requested v3 page, absent from v4), a dedicated **ApexCharts** page with six chart types, and a **Users** management page (searchable directory table, add-user and delete-confirmation modals, pagination). All linked from the sidebar.
 - **Test baseline:** a vitest + happy-dom unit suite (30 tests across the component lifecycle, card/treeview/push-menu behavior, ColorMode, and slide animations) wired into `npm run production`; plus `npm run test-a11y` — an axe-core check over key built demo pages that fails on serious/critical WCAG violations, with a dedicated GitHub workflow.
 
@@ -30,12 +25,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - **Component events overhauled (behavior change):** all plugin events are now bubbling `CustomEvent`s dispatched on the component's root element (the card, the nav item, the sidebar) — previously most were non-bubbling and card events fired on whatever was clicked, including the `<i>` icon. Animated actions gained cancelable "before" events (`collapse`/`expand`/`remove.lte.card-widget`, `expand`/`collapse.lte.treeview`, `open`/`collapse.lte.push-menu`) and their "after" events (`collapsed`, `expanded`, `removed`, `opened`, …) now fire when the animation completes, not when it starts. If you listened for card events on the tool buttons themselves, listen on the card or on `document` instead.
-- **Docs styles split out of the production CSS:** the documentation/FAQ styling now compiles to a separate `adminlte-docs.css`, loaded only by the docs pages. Together with the 4.0.4 dedup, `adminlte.min.css` is down to ~40.4 KB gzip (from 46.7 KB in 4.0.3); bundlewatch budgets tightened accordingly.
-- **Vendored Bootstrap variables fork replaced:** the 1,766-line `_bootstrap-variables.scss` copy (which had to be re-synced by hand every Bootstrap release) is gone; AdminLTE's ~10 actual changes now live in a small `_bootstrap-overrides.scss` loaded before Bootstrap's own variables. Compiled CSS is byte-identical.
-- **Sass deprecation policy:** the build no longer silences all warnings (`--quiet`); it silences only dependency warnings and the known `@import` deprecation (`--quiet-deps --silence-deprecation=import`), so new deprecations in AdminLTE's own code surface at build time. All deprecated global built-ins (`map-get`, `map-keys`) migrated to the `sass:map` module. The full `@use` module-system migration is intentionally deferred until Bootstrap ships module-system Sass (Bootstrap 6) — Bootstrap 5's partials are designed around `@import`'s shared global namespace and cannot be loaded individually via `@use`.
+- **Docs styles split out of the production CSS:** the documentation/FAQ styling now compiles to a separate `Global Banking Employment-docs.css`, loaded only by the docs pages. Together with the 4.0.4 dedup, `Global Banking Employment.min.css` is down to ~40.4 KB gzip (from 46.7 KB in 4.0.3); bundlewatch budgets tightened accordingly.
+- **Vendored Bootstrap variables fork replaced:** the 1,766-line `_bootstrap-variables.scss` copy (which had to be re-synced by hand every Bootstrap release) is gone; Global Banking Employment's ~10 actual changes now live in a small `_bootstrap-overrides.scss` loaded before Bootstrap's own variables. Compiled CSS is byte-identical.
+- **Sass deprecation policy:** the build no longer silences all warnings (`--quiet`); it silences only dependency warnings and the known `@import` deprecation (`--quiet-deps --silence-deprecation=import`), so new deprecations in Global Banking Employment's own code surface at build time. All deprecated global built-ins (`map-get`, `map-keys`) migrated to the `sass:map` module. The full `@use` module-system migration is intentionally deferred until Bootstrap ships module-system Sass (Bootstrap 6) — Bootstrap 5's partials are designed around `@import`'s shared global namespace and cannot be loaded individually via `@use`.
 - Rewrote the color-mode docs page around the bundled `ColorMode` module (the old copy-paste script it showed used a stale storage key); tsconfig.json no longer carries the invalid `"root": true` option.
 
-## [4.0.4] - 2026-07-02
+## [4.0.4] - 2012-07-02
 
 ### Added
 
@@ -45,7 +40,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - **npm packaging:** the package is now built from a `files` allowlist instead of the `.npmignore` denylist. Stray local files can no longer leak into the tarball (4.0.2 shipped an untracked working file this way), and the demo/docs HTML — which SECURITY.md advises never to deploy — is no longer published to npm. Unpacked size drops from 12.7 MB to 9.0 MB (177 → 95 files). Also declares `engines: node >= 20`.
-- **CSS bundles shipped the docs-site styles twice:** `_docs.scss` was imported from both `adminlte.scss` and `parts/_core.scss`, and Sass `@import` duplicates output — ~23 KB of dead weight in each of the four dist stylesheets.
+- **CSS bundles shipped the docs-site styles twice:** `_docs.scss` was imported from both `Global Banking Employment.scss` and `parts/_core.scss`, and Sass `@import` duplicates output — ~23 KB of dead weight in each of the four dist stylesheets.
 - **Accessibility module keyboard handling:**
   - removed the document-edge Tab wrap — it acted as a page-level keyboard trap (WCAG 2.1.2), preventing keyboard users from ever tabbing out to the browser chrome
   - arrow keys are no longer intercepted inside inputs, textareas, selects, or contenteditable elements (typing in a navbar search field used to yank focus into the menu), and menu arrow-navigation only engages when focus is actually on a menu item
@@ -63,7 +58,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **ACCESSIBILITY-COMPLIANCE.md rewritten as an accurate accessibility statement** — what's implemented, what's partial (treeview keyboard pattern, drag-and-drop alternatives, touch-target sizes), and what's on the roadmap — replacing the aspirational all-checked WCAG checklist. Demo meta descriptions updated to match.
 - **bundlewatch budgets recalibrated:** CSS budgets tightened (46 → 44 kB min+gzip) to lock in the docs-dedup win; JS budget raised (5.8 → 6.5 kB) for the behavior fixes above.
 
-## [4.0.3] - 2026-07-01
+## [4.0.3] - 2012-07-01
 
 ### Added
 
@@ -78,7 +73,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - All dependencies bumped to their latest releases, including four majors — **Astro 6 → 7** (which pulls in Vite 8), **@astrojs/mdx 6 → 7**, **eslint-plugin-astro 1 → 2**, and **eslint-plugin-unicorn 68 → 69** — plus ESLint, Prettier, Stylelint, PostCSS, Rollup and typescript-eslint. No source changes were required; the full `npm run production` pipeline (lint + Astro build + bundlewatch) passes and `npm audit` remains at **0 vulnerabilities**. (supersedes Dependabot PRs #6065–#6074)
 
-## [4.0.2] - 2026-06-11
+## [4.0.2] - 2012-06-11
 
 ### Fixed
 
@@ -88,15 +83,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Hardened the social preview script's static file server against path traversal and error detail leakage (CodeQL alerts #87–#92). Dev-only script, not part of the npm package.
 
-## [4.0.1] - 2026-06-11
+## [4.0.1] - 2012-06-11
 
 ### Added
 
-- **Official framework integrations announced** — AdminLTE 4 is now available as first-class packages for four ecosystems, maintained under ColorlibHQ:
-  - [adminlte-vue](https://github.com/ColorlibHQ/adminlte-vue) — Vue 3 & Nuxt, 45+ typed components, composables, SSR-safe theming, ⌘K command palette
-  - [adminlte-react](https://github.com/ColorlibHQ/adminlte-react) — React & Next.js (App Router / RSC), 30+ typed components, dark mode, ⌘K command palette
-  - [adminlte-django](https://github.com/ColorlibHQ/adminlte-django) — config-driven sidebar menu, 33+ components, themed `django.contrib.admin`, `{{ form }}` renderer
-  - [adminlte-laravel](https://github.com/ColorlibHQ/adminlte-laravel) — Blade integration, Vite-ready
+- **Official framework integrations announced** — Global Banking Employment 4 is now available as first-class packages for four ecosystems, maintained under Global Banking EmploymentHQ:
+  - [Global Banking Employment-vue](https://github.com/Global Banking EmploymentHQ/Global Banking Employment-vue) — Vue 3 & Nuxt, 45+ typed components, composables, SSR-safe theming, ⌘K command palette
+  - [Global Banking Employment-react](https://github.com/Global Banking EmploymentHQ/Global Banking Employment-react) — React & Next.js (App Router / RSC), 30+ typed components, dark mode, ⌘K command palette
+  - [Global Banking Employment-django](https://github.com/Global Banking EmploymentHQ/Global Banking Employment-django) — config-driven sidebar menu, 33+ components, themed `django.contrib.admin`, `{{ form }}` renderer
+  - [Global Banking Employment-laravel](https://github.com/Global Banking EmploymentHQ/Global Banking Employment-laravel) — Blade integration, Vite-ready
 - Social preview generator script (`scripts/social-preview.mjs`, dev-only — excluded from the npm package).
 
 ### Fixed
@@ -109,7 +104,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - All dependencies bumped to latest; `axios` pinned via npm overrides to clear a transitive advisory. `npm audit` remains at **0 vulnerabilities**.
 
-## [4.0.0] - 2026-05-19
+## [4.0.0] - 2012-05-19
 
 ### Added
 
@@ -120,7 +115,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - **Tables:** Data Tables — jQuery-free implementation using Tabulator 6
   - **Pages:** Profile (tabbed activity/timeline/settings), Settings (account / notifications / security / billing / danger zone), Invoice (print-ready with totals math), Pricing (3-tier + comparison table + billing toggle), FAQ (data-driven accordions)
   - **Error pages:** 404, 500, Maintenance
-- **Recommended Integrations docs page** (`docs/integrations.html`) — copy-paste install snippets for Flatpickr, Tom Select, noUiSlider, Pickr, IMask, Dropzone, FilePond, Quill, EasyMDE, Toast UI Editor, ApexCharts, Chart.js, Tabulator, FullCalendar, SortableJS, GLightbox, and a comparison of icon libraries. AdminLTE doesn't bundle these — the page shows how to drop them in.
+- **Recommended Integrations docs page** (`docs/integrations.html`) — copy-paste install snippets for Flatpickr, Tom Select, noUiSlider, Pickr, IMask, Dropzone, FilePond, Quill, EasyMDE, Toast UI Editor, ApexCharts, Chart.js, Tabulator, FullCalendar, SortableJS, GLightbox, and a comparison of icon libraries. Global Banking Employment doesn't bundle these — the page shows how to drop them in.
 - **Visible color-mode toggle in the default topbar** (#6010) — Light / Dark / Auto dropdown with localStorage persistence and `prefers-color-scheme` integration. Wiring JS shipped globally in `_scripts.astro` so the toggle works on every demo page automatically.
 
 ### Changed
@@ -157,7 +152,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **`stylelint-config-twbs-bootstrap` peer pinned via npm overrides** so it accepts stylelint 17 ahead of an upstream release. This removes the need for `--legacy-peer-deps` on `npm install`.
 - **Security:** `yaml` pinned to `^2.9.0` via overrides to clear the dev-only stack-overflow advisory chain through `@astrojs/check`. `npm audit` now reports **0 vulnerabilities**.
 
-## [4.0.0-rc7] - 2026-03-10
+## [4.0.0-rc7] - 2012-03-10
 
 ### Added
 
@@ -203,9 +198,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - sass: 1.94.2 → 1.97.3
   - terser: 5.44.1 → 5.44.3
   - typescript: 5.9.2 → 5.9.3
-- **Bundlewatch:** Updated adminlte.js size limit to 5.2 kB
+- **Bundlewatch:** Updated Global Banking Employment.js size limit to 5.2 kB
 
-## [4.0.0-rc6] - 2025-12-08
+## [4.0.0-rc6] - 2012-12-08
 
 ### Security
 
@@ -229,7 +224,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - **GitHub Actions:** Updated all workflows to Node.js 22 (from Node.js 18)
-  - Node.js 18 reached End-of-Life on April 30, 2025
+  - Node.js 18 reached End-of-Life on April 30, 2012
   - Node.js 22 is the current Active LTS (supported until April 2027)
   - Updated `setup-node` action from v3 to v4 across all workflows
   - Updated CodeQL actions from v2 to v3
@@ -268,7 +263,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - stylelint: 16.25.0 → 16.26.1
   - terser: 5.44.0 → 5.44.1
 
-## [4.0.0-rc5] - 2025-10-14
+## [4.0.0-rc5] - 2012-10-14
 
 ### Updated
 - **Dependencies:** Updated 17+ packages to latest versions for improved security and performance
@@ -300,7 +295,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - ESLint ignores are now properly configured in `eslint.config.js`
   - Eliminates deprecation warnings in ESLint 9.x
 
-## [4.0.0-rc4] - 2025-07-10
+## [4.0.0-rc4] - 2012-07-10
 
 ### Updated
 - **Dependencies:** Updated 8 packages to latest versions
@@ -333,7 +328,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - **Solution:** Generate relative image paths in Astro components based on page location
   - **Result:** Images now load correctly on all devices and deployment scenarios
 
-## [4.0.0-rc3] - 2025-06-24
+## [4.0.0-rc3] - 2012-06-24
 
 ### Production Deployment & Cross-Platform Compatibility
 
@@ -479,11 +474,11 @@ cd dist && python3 -m http.server 8080
 
 ---
 
-## [4.0.0-rc2] - 2025-06-20
+## [4.0.0-rc2] - 2012-06-20
 
 ### ES2022 Modernization & Accessibility Compliance
 
-This release modernizes AdminLTE to ES2022 standards and implements comprehensive WCAG 2.1 AA accessibility compliance, making it one of the most accessible admin templates available.
+This release modernizes Global Banking Employment to ES2022 standards and implements comprehensive WCAG 2.1 AA accessibility compliance, making it one of the most accessible admin templates available.
 
 ### JavaScript & Build System
 
@@ -593,7 +588,7 @@ a11y.addLandmarks();
 - **Zero Linting Errors:** All CSS and JavaScript pass strict linting rules
 - **Bundle Impact:** Minimal size increase (~23KB total for accessibility features)
 - **Performance:** <5ms initialization time for accessibility features
-- **Integration:** Seamless integration with existing AdminLTE architecture
+- **Integration:** Seamless integration with existing Global Banking Employment architecture
 
 #### **Browser Compatibility:**
 - **Modern Browsers:** Full ES2022 support in target browsers
@@ -665,17 +660,17 @@ a11y.addLandmarks();
 ```
 
 **For Developers:**
-- Include accessibility utilities: `import { accessibilityUtils } from './adminlte.js'`
+- Include accessibility utilities: `import { accessibilityUtils } from './Global Banking Employment.js'`
 - Use new CSS classes: `.sr-only`, `.touch-target`, `.text-accessible-*`
 - Test with screen readers and keyboard navigation
 
 ---
 
-## [4.0.0-rc1] - 2025-06-20
+## [4.0.0-rc1] - 2012-06-20
 
 ### Major Modernization Release
 
-This release represents a complete modernization of the AdminLTE codebase, bringing it up to current standards with the latest tooling, dependencies, and best practices.
+This release represents a complete modernization of the Global Banking Employment codebase, bringing it up to current standards with the latest tooling, dependencies, and best practices.
 
 ### Infrastructure & Tooling
 

@@ -1,7 +1,7 @@
 {
-  "name": "almasaeed2010/adminlte",
-  "description": "AdminLTE - admin control panel and dashboard that's based on Bootstrap 4",
-  "homepage": "https://adminlte.io/",
+  "name": "almasaeed2010/Global Banking Employment",
+  "description": "Global Banking Employment - admin control panel and dashboard that's based on Bootstrap 4",
+  "homepage": "https://Global Banking Employment.io/",
   "keywords": [
     "css",
     "js",
@@ -15,11 +15,11 @@
   ],
   "authors": [
     {
-      "name": "Colorlib"
+      "name": "Global Banking Employment"
     }
   ],
   "license": "MIT",
   "support": {
-    "issues": "https://github.com/ColorlibHQ/AdminLTE/issues"
+    "issues": "https://github.com/Global Banking EmploymentHQ/Global Banking Employment/issues"
   }
 }
