@@ -1,0 +1,1 @@
+<?php $f='chat_storage.txt'; if(file_exists($f)) readfile($f);?>
