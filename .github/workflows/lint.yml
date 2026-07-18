@@ -53,6 +53,8 @@ jobs:
 
       - name: Show lint versions
         run: |
+          set +e
+
           echo "===== STYLELINT VERSION ====="
           npx stylelint --version
 
@@ -63,9 +65,11 @@ jobs:
           npm --version
 
           echo "===== PACKAGE TREE ====="
-          npm ls stylelint
-          npm ls stylelint-config-twbs-bootstrap
-          npm ls @stylistic/stylelint-plugin
+          npm ls stylelint || true
+          npm ls stylelint-config-twbs-bootstrap || true
+          npm ls @stylistic/stylelint-plugin || true
+
+          set -e
 
       - name: Run Stylelint diagnostics
         run: |
@@ -79,4 +83,8 @@ jobs:
           npm run css-lint
 
       - name: Run full lint
-        run: npm run lint
+        run: |
+          npm run lockfile-lint
+          npm run css-lint
+          npm run docs-lint
+          npm run js-lint
