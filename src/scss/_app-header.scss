@@ -40,7 +40,7 @@
   // stay visible while the page content scrolls beneath the fixed header.
   // Only applied on `sidebar-expand-*` breakpoints, since the mobile sidebar
   // is an off-canvas overlay that handles its own positioning.
-  @each $breakpoint in map.keys($grid-breakpoints) {
+  @each $breakpoint, $value in $grid-breakpoints {
     $next: breakpoint-next($breakpoint, $grid-breakpoints);
     $infix: breakpoint-infix($next, $grid-breakpoints);
 
